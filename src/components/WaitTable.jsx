@@ -10,7 +10,7 @@ import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 
 
-export default function FuelTable({ data }) {
+export default function WaitTable({ data }) {
 
   return (
     <>
@@ -20,7 +20,7 @@ export default function FuelTable({ data }) {
             noWrap
             component="a"
           >
-            Store
+            Wait Times
           </Typography>
     </Box>
 
@@ -28,23 +28,21 @@ export default function FuelTable({ data }) {
       <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Sales</TableCell>
-            <TableCell align="right">Members</TableCell>
-            <TableCell align="right">Drink Club&nbsp;</TableCell>
-            <TableCell align="right">Lottery&nbsp;</TableCell>
+            <TableCell align="center">C-Store</TableCell>
+            <TableCell align="center">CW Sales</TableCell>
+            <TableCell align="center">CW Load&nbsp;</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
         <TableRow
-              key={data.sales}
+              key={data.waitStore}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {data.sales}
+              <TableCell align="center" component="th" scope="row">
+                {data.waitStore}
               </TableCell>
-              <TableCell align="right">{data.members}</TableCell>
-              <TableCell align="right">{data.memberSales}</TableCell>
-              <TableCell align="right">{data.lotterySales}</TableCell>
+              <TableCell align="center">{data.waitSales}</TableCell>
+              <TableCell align="center">{data.waitLoad}</TableCell>
             </TableRow>
         </TableBody>
       </Table>

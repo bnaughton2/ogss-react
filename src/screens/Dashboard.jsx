@@ -1,5 +1,6 @@
 import "../css/main.css";
 import React, { useState, useEffect} from 'react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import FuelTable from "../components/FuelTable";
 import OilTable from "../components/OilTable";
 import WashTable from "../components/WashTable";
@@ -7,6 +8,7 @@ import StoreTable from "../components/StoreTable";
 import ExtrasTable from "../components/ExtrasTable";
 import ProfitTable from "../components/ProfitTable";
 import Checklist from "../components/Checklist";
+import WaitTable from "../components/WaitTable";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -27,6 +29,8 @@ export default function Dashboard() {
     const [damagesData, setDamagesData] = useState({});
     const [extrasData, setExtrasData] = useState({});
 
+    const isLargeScreen = useMediaQuery('(min-width: 900px)');
+    const tmp = {"waitStore": 0, "waitSales": 0, "waitLoad": 0}
 
     const fetchData = () => {
         const requestOptions = {
@@ -63,21 +67,50 @@ export default function Dashboard() {
         <Grid container spacing={1}>
         
         <Grid item xs={12} md={4} >
+        {!isLargeScreen ? 
+        <Accordion xs={12} md={4}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          <Typography>Checklist / Wait Times</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Checklist />
+        <WaitTable data={tmp}/>
+        </AccordionDetails>
+      </Accordion> :
+      <>
+      <Checklist />
+      <Paper elevation={1} sx={{marginTop: "2%"}}>
+        <WaitTable data={tmp}/>
+      </Paper>
+      </>
+      }
+            
+        </Grid>
+        <Grid item xs={12} md={5}>
+          {!isLargeScreen ? 
+
         <Accordion defaultExpanded xs={12} md={4}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          <Typography>Checklist</Typography>
+          <Typography>Sales</Typography>
         </AccordionSummary>
         <AccordionDetails>
-        <Checklist />
+        <Paper elevation={1}>
+                <FuelTable data={gasData} />
+                <OilTable oilData={oilData} damagesData={damagesData} />
+                <StoreTable data={storeData} />
+                <WashTable washData={washData} damagesData={damagesData} storeData={storeData} />
+                <ExtrasTable extrasData={extrasData} payrollData={payrollData} />
+            </Paper>
         </AccordionDetails>
-      </Accordion>
-            
-        </Grid>
-        <Grid item xs={12} md={5}>
+      </Accordion>  :
             <Paper elevation={1}>
                 <FuelTable data={gasData} />
                 <OilTable oilData={oilData} damagesData={damagesData} />
@@ -85,11 +118,31 @@ export default function Dashboard() {
                 <WashTable washData={washData} damagesData={damagesData} storeData={storeData} />
                 <ExtrasTable extrasData={extrasData} payrollData={payrollData} />
             </Paper>
+            }
+
         </Grid>
         <Grid item xs={12} md={3}>
-            <Paper elevation={1}> 
+          {!isLargeScreen ?
+          <Accordion xs={12} md={4}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1-content"
+            id="panel1-header"
+          >
+            <Typography>Profit</Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+          <Paper elevation={1}> 
                 <ProfitTable data={dashboardData} />
-            </Paper>
+          </Paper>
+          </AccordionDetails>
+        </Accordion> 
+          :
+          <Paper elevation={1}> 
+                <ProfitTable data={dashboardData} />
+          </Paper>
+          }
+            
         </Grid>
     </Grid>
         }
