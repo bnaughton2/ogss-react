@@ -8,29 +8,39 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
+import Toolbar from '@mui/material/Toolbar';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 
 export default function WaitTable({ data }) {
 
   return (
     <>
-    <Box sx={{flexGrow: 1, textAlign: "center"}}>
+    <Toolbar variant="dense">
     <Typography
-            variant="h6"
-            noWrap
-            component="a"
-          >
-            Wait Times
-          </Typography>
-    </Box>
-
-    <TableContainer component={Paper}>
+          sx={{ flex: '1 1 100%' }}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+          align="center"
+        >
+          Wait Times
+        </Typography>
+    <Tooltip title="Toggle Alerts/Percents">
+          <IconButton>
+            <FilterListIcon />
+          </IconButton>
+        </Tooltip>    
+    </Toolbar>
+    <TableContainer >
       <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell align="center">C-Store</TableCell>
             <TableCell align="center">CW Sales</TableCell>
-            <TableCell align="center">CW Load&nbsp;</TableCell>
+            <TableCell align="center">CW Load</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

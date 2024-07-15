@@ -24,7 +24,7 @@ export default function ExtrasTable({ extrasData, payrollData }) {
           </Typography>
     </Box>
 
-    <TableContainer component={Paper} elevation={1}>
+    <TableContainer  elevation={1}>
       <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>

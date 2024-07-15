@@ -9,6 +9,7 @@ import ExtrasTable from "../components/ExtrasTable";
 import ProfitTable from "../components/ProfitTable";
 import Checklist from "../components/Checklist";
 import WaitTable from "../components/WaitTable";
+import DateRange from "../components/DateRange";
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
@@ -17,6 +18,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Typography from '@mui/material/Typography';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
 export default function Dashboard() {
@@ -28,9 +31,17 @@ export default function Dashboard() {
     const [washData, setWashData] = useState({});
     const [damagesData, setDamagesData] = useState({});
     const [extrasData, setExtrasData] = useState({});
+    
+    const [checklistDate, setChecklistDate] = useState(null);
 
     const isLargeScreen = useMediaQuery('(min-width: 900px)');
     const tmp = {"waitStore": 0, "waitSales": 0, "waitLoad": 0}
+
+    const changeChecklistDate = date => {
+      setChecklistDate(date);
+      console.log(date);
+      // setStartDate(e.target.value);
+    };
 
     const fetchData = () => {
         const requestOptions = {
@@ -65,8 +76,18 @@ export default function Dashboard() {
     <>
         {!dashboardData? (<div id="loading">Loading</div>)  :
         <Grid container spacing={1}>
-        
-        <Grid item xs={12} md={4} >
+        <Grid container item xs={12} wrap='nowrap'>
+        <DatePicker 
+            justifyContent="flex-start"
+                label="Select Date"
+                value={checklistDate}
+                onChange={changeChecklistDate}
+                slotProps={{ textField: { size: 'small' } }}
+                // sx={{width: '10%'}}
+                />
+          <DateRange />
+        </Grid>
+        <Grid container item xs={12} md={4} justifyContent="space-evenly">
         {!isLargeScreen ? 
         <Accordion xs={12} md={4}>
         <AccordionSummary
@@ -83,14 +104,14 @@ export default function Dashboard() {
       </Accordion> :
       <>
       <Checklist />
-      <Paper elevation={1} sx={{marginTop: "2%"}}>
+      <Paper elevation={1} sx={{marginTop: "2%", width: "100%"}}>
         <WaitTable data={tmp}/>
       </Paper>
       </>
       }
             
         </Grid>
-        <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={5} justifyContent="space-evenly">
           {!isLargeScreen ? 
 
         <Accordion defaultExpanded xs={12} md={4}>
@@ -121,7 +142,7 @@ export default function Dashboard() {
             }
 
         </Grid>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={3} >
           {!isLargeScreen ?
           <Accordion xs={12} md={4}>
           <AccordionSummary

@@ -1,7 +1,7 @@
 import React from 'react'
 import Dashboard from '../screens/Dashboard'
 import ManagerSection from '../screens/ManagerSection'
-import Accordion from '../components/Accordion'
+import DateRange from '../components/DateRange'
 import { Route, Routes } from 'react-router-dom'
 
 export default function Router() {
@@ -10,7 +10,7 @@ export default function Router() {
       <Route path="/" element={<Dashboard />}></Route>
       <Route path="/dashboard" element={<Dashboard />}></Route>
       <Route path="/manager" element={<ManagerSection />}></Route>
-      <Route path="/accordion" element={<Accordion />}></Route>
+      <Route path="/daterange" element={<DateRange />}></Route>
     </Routes>
   )
 }

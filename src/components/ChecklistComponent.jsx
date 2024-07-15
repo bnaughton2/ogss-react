@@ -15,7 +15,7 @@ import { Image } from 'mui-image';
 import x from '../assets/images/x.png';
 import check from '../assets/images/check.png';
 
-export default function ChecklistComponent({ title, progress, mtd}){
+export default function ChecklistComponent({ title, progress, mtd, loadProgress=true, altTitle}){
 
 
     return(
@@ -30,9 +30,16 @@ export default function ChecklistComponent({ title, progress, mtd}){
             height: 25,
         }} />}
         <Typography variant="caption" display="block">{title} </Typography>
+        {loadProgress ? 
+        <>
         <Typography variant="caption" display="block">Progress: {progress}%</Typography>
-        <Typography variant="caption" display="block">MTD: {mtd}</Typography>
         <LinearProgress variant="determinate" value={progress} sx={{marginLeft: '10%', marginRight: '10%'}}/>
+        </>
+        :
+        <Typography variant="caption" display="block">{altTitle}</Typography>
+        }
+        
+        {/* <Typography variant="caption" display="block">MTD: {mtd}</Typography> */}
         </>
     );
 }

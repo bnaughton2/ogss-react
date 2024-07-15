@@ -14,6 +14,10 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { Image } from 'mui-image';
 import ChecklistComponent from './ChecklistComponent';
 import x from '../assets/images/x.png';
+import Toolbar from '@mui/material/Toolbar';
+import FilterListIcon from '@mui/icons-material/FilterList';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
 
 
 export default function Checklist({data}){
@@ -22,15 +26,22 @@ export default function Checklist({data}){
 
     return(
         <Paper>
-            <Box sx={{flexGrow: 1, textAlign: "center"}}>
-            <Typography
+                <Toolbar variant="dense">
+                <Typography
+                    sx={{ flex: '1 1 100%' }}
                     variant="h6"
-                    noWrap
-                    component="a"
-                >
+                    id="tableTitle"
+                    component="div"
+                    align="center"
+                    >
                     Checklist
-                </Typography>
-            </Box>
+                    </Typography>
+                <Tooltip title="Toggle MTD">
+                    <IconButton>
+                        <FilterListIcon />
+                    </IconButton>
+                    </Tooltip>    
+                </Toolbar>
                 <Grid container spacing={1}>
                     <Grid item xs={12}>
                         <Grid container item spacing={1} direction="row" alignItems="center" justifyContent="center" marginBottom="2%" marginTop="2%">
@@ -48,13 +59,13 @@ export default function Checklist({data}){
                     <Grid item xs={12}>
                         <Grid container item spacing={1} direction="row" alignItems="center" justifyContent="center" marginBottom="2%" marginTop="2%">
                             <Grid item xs={4} align="center">
-                                <ChecklistComponent title="Site Operations" progress={progress} mtd=""/>
+                                <ChecklistComponent title="Site Operations" progress={progress} altTitle="7-10" loadProgress={false} mtd=""/>
                             </Grid>
                             <Grid item xs={4} align="center">
                                 <ChecklistComponent title="Check-Ins" progress={progress} mtd=""/>
                             </Grid>
                             <Grid item xs={4} align="center">
-                                <ChecklistComponent title="Site Operations" progress={progress} mtd=""/>
+                                <ChecklistComponent title="Site Operations" progress={progress} altTitle="1-4" loadProgress={false} mtd=""/>
                             </Grid>
                         </Grid>
                     </Grid>

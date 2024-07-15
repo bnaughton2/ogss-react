@@ -24,7 +24,7 @@ export default function FuelTable({ data }) {
           </Typography>
     </Box>
 
-    <TableContainer component={Paper}>
+    <TableContainer >
       <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
