@@ -35,7 +35,7 @@ export default function WaitTable({ data }) {
         </Tooltip>    
     </Toolbar>
     <TableContainer >
-      <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: "50%", tableLayout: 'fixed' }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell align="center">C-Store</TableCell>

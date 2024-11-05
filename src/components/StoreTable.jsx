@@ -25,12 +25,12 @@ export default function FuelTable({ data }) {
     </Box>
 
     <TableContainer >
-      <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: "50%", tableLayout: 'fixed' }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Sales</TableCell>
-            <TableCell align="right">Members</TableCell>
-            <TableCell align="right">Drink Club&nbsp;</TableCell>
+            <TableCell align="center">Members</TableCell>
+            <TableCell align="center">Drink Club&nbsp;</TableCell>
             <TableCell align="right">Lottery&nbsp;</TableCell>
           </TableRow>
         </TableHead>
@@ -42,8 +42,8 @@ export default function FuelTable({ data }) {
               <TableCell component="th" scope="row">
                 {data.sales}
               </TableCell>
-              <TableCell align="right">{data.members}</TableCell>
-              <TableCell align="right">{data.memberSales}</TableCell>
+              <TableCell align="center">{data.members}</TableCell>
+              <TableCell align="center">{data.memberSales}</TableCell>
               <TableCell align="right">{data.lotterySales}</TableCell>
             </TableRow>
         </TableBody>

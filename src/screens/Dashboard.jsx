@@ -48,8 +48,8 @@ export default function Dashboard() {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                startDate: "2024-02-27",
-                endDate: "2024-02-28"
+                startDate: "2024-07-16",
+                endDate: "2024-07-16"
               })
             };
     
@@ -74,7 +74,7 @@ export default function Dashboard() {
 
     return (
     <>
-        {!dashboardData? (<div id="loading">Loading</div>)  :
+        {!dashboardData? (<div id="loading">Loading...</div>)  :
         <Grid container spacing={1}>
         <Grid container item xs={12} wrap='nowrap'>
         <DatePicker 
@@ -99,7 +99,9 @@ export default function Dashboard() {
         </AccordionSummary>
         <AccordionDetails>
         <Checklist />
-        <WaitTable data={tmp}/>
+        <Paper elevation={1} sx={{marginTop: "2%", width: "100%"}}>
+          <WaitTable data={tmp}/>
+        </Paper>
         </AccordionDetails>
       </Accordion> :
       <>
@@ -142,9 +144,9 @@ export default function Dashboard() {
             }
 
         </Grid>
-        <Grid item xs={12} md={3} >
+        <Grid container item xs={12} md={3} justifyContent="space-evenly">
           {!isLargeScreen ?
-          <Accordion xs={12} md={4}>
+          <Accordion xs={12} md={4} sx={{width: "100%"}}>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1-content"
@@ -159,7 +161,7 @@ export default function Dashboard() {
           </AccordionDetails>
         </Accordion> 
           :
-          <Paper elevation={1}> 
+          <Paper elevation={1} sx={{width: "100%"}}> 
                 <ProfitTable data={dashboardData} />
           </Paper>
           }

@@ -25,7 +25,7 @@ export default function ProfitTable({ data }) {
     </Box>
 
     <TableContainer >
-      <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: "50%", borderBottom: "1px solid", borderTop: "1px solid", borderColor: "lightgray" }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Profit</TableCell>

@@ -25,12 +25,12 @@ export default function WashTable({ washData, damagesData, storeData }) {
     </Box>
 
     <TableContainer >
-      <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: "50%", tableLayout: 'fixed' }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Sales</TableCell>
-            <TableCell align="right">Members</TableCell>
-            <TableCell align="right">Vending&nbsp;</TableCell>
+            <TableCell align="center">Members</TableCell>
+            <TableCell align="center">Vending&nbsp;</TableCell>
             <TableCell align="right">Damages&nbsp;</TableCell>
           </TableRow>
         </TableHead>
@@ -42,8 +42,8 @@ export default function WashTable({ washData, damagesData, storeData }) {
               <TableCell component="th" scope="row">
                 {washData.sales}
               </TableCell>
-              <TableCell align="right">{washData.washMembers}</TableCell>
-              <TableCell align="right">{storeData.vendingSales}</TableCell>
+              <TableCell align="center">{washData.washMembers}</TableCell>
+              <TableCell align="center">{storeData.vendingSales}</TableCell>
               <TableCell align="right">{damagesData.damagesWash}</TableCell>
             </TableRow>
         </TableBody>

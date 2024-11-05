@@ -25,12 +25,12 @@ export default function OilTable({ oilData, damagesData }) {
     </Box>
 
     <TableContainer >
-      <Table sx={{ minWidth: "50%" }} size="small" aria-label="a dense table">
+      <Table sx={{ minWidth: "50%", tableLayout: 'fixed' }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
             <TableCell>Sales</TableCell>
-            <TableCell align="right">Emissions</TableCell>
-            <TableCell align="right">Vin Checks&nbsp;</TableCell>
+            <TableCell align="center">Emissions</TableCell>
+            <TableCell align="center">Vin Checks&nbsp;</TableCell>
             <TableCell align="right">Damages&nbsp;</TableCell>
           </TableRow>
         </TableHead>
@@ -42,8 +42,8 @@ export default function OilTable({ oilData, damagesData }) {
               <TableCell component="th" scope="row">
                 {oilData.sales}
               </TableCell>
-              <TableCell align="right">{oilData.emissions}</TableCell>
-              <TableCell align="right">{oilData.vinChecks}</TableCell>
+              <TableCell align="center">{oilData.emissions}</TableCell>
+              <TableCell align="center">{oilData.vinChecks}</TableCell>
               <TableCell align="right">{damagesData.damagesOil}</TableCell>
             </TableRow>
         </TableBody>
